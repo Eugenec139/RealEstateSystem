@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="ThemeStarz">
+
+  {% load staticfiles %}
+    <style>
+        @font-face {
+  font-family: "FontAwesome";
+  src: url("{% static 'assets/fonts/fontawesome-webfont.eot?v=4.0.3' %}");
+  src: url("{% static 'assets/fonts/fontawesome-webfont.eot?#iefix&v=4.0.3' %}") format("embedded-opentype"), url("{% static 'assets/fonts/fontawesome-webfont.woff?v=4.0.3'%}") format("woff"), url("{% static 'assets/fonts/fontawesome-webfont.ttf?v=4.0.3'%}") format("truetype"), url("{% static 'assets/fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular'%}") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+    </style>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+    <link href="{% static 'assets/fonts/font-awesome.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-select.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.slider.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" type="text/css">
+
+    <title>Zoner | Create an Account</title>
+
+</head>
+
+<body class="page-sub-page page-create-account page-account" id="page-top">
+<!-- Wrapper -->
+<div class="wrapper">
+    <!-- Navigation -->
+    <div class="navigation">
+        <div class="secondary-navigation">
+            <div class="container">
+                <div class="contact">
+                    <figure><strong>Phone:</strong>+1 810-991-3842</figure>
+                    <figure><strong>Email:</strong>zoner@example.com</figure>
+                </div>
+                <div class="user-area">
+                           <div class="actions">
+                        {% if user.is_authenticated %}
+
+                                             {% if user.account_type != "agency" %}
+                                                  <a href="{% url 'create_agency' %}" class="promoted">Create Agency</a>
+                                             {% endif %}
+                        {% endif %}
+
+                                                {% if user.is_authenticated %}
+
+                                                       {% if user.account_type != "agency" %}
+
+                                                                            <a href="{% url 'profile' %}" class="promoted"><strong>Profile</strong></a>
+
+
+                                                       {% else %}
+
+                                                    <a href="{% url 'agency_profile' %}" class="promoted"><strong>Profile</strong></a>
+                                                        {% endif %}
+                                                 {% else %}
+
+                                                     <a href="#" class="promoted"><strong>Register</strong></a>
+
+                                                 {% endif %}
+
+                        {% if user.is_authenticated %}
+
+                        <a href="{% url 'signin' %}">Sign Out</a>
+
+
+                        {% endif %}
+                    </div>
+                    <div class="language-bar">
+                        <a href="#" class="active"><img src="{% static 'assets/img/flags/gb.png' %}" alt=""></a>
+                        <a href="#"><img src="{% static 'assets/img/flags/de.png' %}" alt=""></a>
+                        <a href="#"><img src="{% static 'assets/img/flags/es.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <header class="navbar" id="top" role="banner">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand nav" id="brand">
+                        <a href="index-google-map-fullscreen.html"><img src="{% static 'assets/img/logo.png' %}" alt="brand"></a>
+                    </div>
+                </div>
+                <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                    <ul class="nav navbar-nav">
+                        <li class="active has-child"><a href="{% url 'home' %}">Homepage</a>
+                            <ul class="child-navigation">
+                                <li><a href="index-google-map-fullscreen.html">Google Map Full Screen</a></li>
+                                <li><a href="index-google-map-fixed-height.html">Google Map Fixed Height</a></li>
+                                <li><a href="index-google-map-fixed-navigation.html">Google Map Fixed Navigation</a></li>
+                                <li><a href="index-osm.html">OpenStreetMap Full Screen</a></li>
+                                <li><a href="index-osm-fixed-height.html">OpenStreetMap Fixed Height</a></li>
+                                <li><a href="index-osm-fixed-navigation.html">OpenStreetMap Fixed Navigation</a></li>
+                                <li><a href="index-slider.html">Slider Homepage</a></li>
+                                <li><a href="index-slider-search-box.html">Slider with Search Box</a></li>
+                                <li><a href="index-horizontal-search-floated.html">Horizontal Search Floated</a></li>
+                                <li><a href="index-advanced-horizontal-search.html">Horizontal Advanced Search</a></li>
+                                <li><a href="index-slider-horizontal-search-box.html">Horizontal Slider Search</a></li>
+                                <li><a href="index-slider-horizontal-search-box-floated.html">Horizontal Slider Floated Search</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-child"><a href="#">Properties</a>
+                            <ul class="child-navigation">
+                                <li><a href="{% url 'property_detail' %}">Property Detail</a></li>
+                                <li><a href="{% url 'property_listing' %}">Masonry Listing</a></li>
+                                <li><a href="{% url 'property_grid_listing' %}">Grid Listing</a></li>
+                                <li><a href="{% url 'property_line_listing' %}">Lines Listing</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-child"><a href="#">Pages</a>
+                            <ul class="child-navigation">
+                                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                                <li><a href="{% url 'agent_detail' %}">Agent Detail</a></li>
+                                <li><a href="{% url 'invoice' %}">Invoice</a></li>
+                                <li><a href="{% url 'profile' %}">Profile</a></li>
+                                <li><a href="{% url 'my_properties' %}">My Properties</a></li>
+                                <li><a href="{% url 'bookmarked' %}">Bookmarked Properties</a></li>
+                                <li><a href="#">Create Account</a></li>
+                                <li><a href="{% url 'create_agency' %}">Create Agency</a></li>
+                                <li><a href="{% url 'signin' %}">Sign In</a></li>
+                                <li class="has-child"><a href="#">Error Pages</a>
+                                    <ul class="child-navigation">
+                                        <li><a href="{% url '403' %}">403</a></li>
+                                        <li><a href="{% url '404' %}">404</a></li>
+                                        <li><a href="{% url '500' %}">500</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="">FAQ</a></li>
+                                <li><a href="{% url 'left_side' %}">Left Sidebar</a></li>
+                                <li><a href="{% url 'right_side' %}">Right Sidebar</a></li>
+                                <li><a href="sticky-footer.html">Sticky Footer</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="shortcodes.html">Shortcodes</a></li>
+                                <li><a href="{% url 'timeline' %}">Timeline</a></li>
+                                <li><a href="{% url 'terms_conditions' %}">Terms & Conditions</a></li>
+                                <li><a href="{% url 'rtl' %}">RTL Support</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-child"><a href="#">Agents & Agencies</a>
+                            <ul class="child-navigation">
+                                <li><a href="{% url 'agent_listing' %}">Agents Listing</a></li>
+                                <li><a href="{% url 'agent_detail' %}">Agent Detail</a></li>
+                                <li><a href="{% url 'agency_listing' %}">Agencies Listing</a></li>
+                                <li><a href="{% url 'agency_detail' %}">Agency Detail</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'add_property' %}">Submit</a></li>
+                        <li class="has-child"><a href="#">Blog</a>
+                            <ul class="child-navigation">
+                                <li><a href="blog.html">Blog Listing</a></li>
+                                <li><a href="blog-detail.html">Blog Post Detail</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </nav><!-- /.navbar collapse-->
+                <div class="add-your-property">
+                    <a href="{% url 'add_property' %}" class="btn btn-default"><i class="fa fa-plus"></i><span class="text">Add Your Property</span></a>
+                </div>
+            </header><!-- /.navbar -->
+        </div><!-- /.container -->
+    </div><!-- /.navigation -->
+    <!-- end Navigation -->
+    <!-- Page Content -->
+    <div id="page-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Account</a></li>
+                <li class="active">My Properties</li>
+            </ol>
+        </div>
+        <!-- end Breadcrumb -->
+
+        <div class="container">
+            <div class="row">
+            <!-- sidebar -->
+            <div class="col-md-3 col-sm-2">
+                <section id="sidebar">
+                    <header><h3>Account</h3></header>
+                    <aside>
+                        <ul class="sidebar-navigation">
+                            {% if user.is_authenticated %}
+
+                                             {% if user.account_type == "agency" %}
+                                                                         <li><a href="{% url 'agency_profile' %}"><i class="fa fa-user"></i><span>Profile</span></a></li>
+
+                                               {% elif user.account_type == "agent" %}
+                                                                                                     <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i><span>Profile</span></a></li>
+
+                                               {% endif %}
+
+                                                                         <li class="active"><a href="#"><i class="fa fa-user"></i><span>My Agents</span></a></li>
+
+                                             
+
+
+{% endif %}
+                            <li ><a href="{% url 'my_properties' %}"><i class="fa fa-home"></i><span>My Properties</span></a></li>
+                            <li><a href="{% url 'bookmarked' %}"><i class="fa fa-heart"></i><span>Bookmarked Properties</span></a></li>
+                            <li><a href="{% url 'change_password' %}"><i class="fa fa-home"></i><span>Change Password</span></a></li>
+
+                        </ul>
+                    </aside>
+                </section><!-- /#sidebar -->
+            </div><!-- /.col-md-3 -->
+            <!-- end Sidebar -->
+                <!-- My Properties -->
+                <div class="col-md-9 col-sm-10">
+                    <section id="my-properties">
+                        <header><h1>Select Agent to re assign Properties To</h1></header>
+                        <div class="my-properties">
+                            <div class="table-responsive">
+                                {% if user_count > 0 %}
+                                <table class="table" id="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Agent</th>
+                                        <th></th>
+                                        <th>Properties</th>
+                                        <th>Active</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for user in users %}
+                                    <tr>
+                                        <td class="image">
+
+                                            <a href="property-detail.html">
+                                                {% if not user.profile_photo %}
+                                                <img alt="" src="{% static 'assets/img/properties/property-04.jpg' %}">
+                                        {% else %}
+                                             <img alt="" class="image" src="{{ user.profile_photo }}" >
+                                        {% endif %}
+                                                </a>
+                                        </td>
+                                        <td><div class="inner">
+                                            <a href="{% url 'agent_detail' %}?page={{ user.pk }}"><h2>{{ user.first_name}} {{ user.last_name }}</h2></a>
+
+                                            <div class="tag price">{{ user.email_address }} </div>
+                                            <figure>{{ user.phone_number }}</figure>
+                                        </div>
+                                        </td>
+                                        <td>{{ user.date_added }}</td>
+                                        <td>{% if user.account_status == 1 %}
+
+                                           <p>ACTIVE</p>
+                                            {% elif user.account_status == 2  %}
+                                                <p>IN - ACTIVE</p>
+                                            {% elif user.account_status == 3  %}
+                                                <p>BLOCKED</p>
+                                            {% elif user.account_status == 4  %}
+                                                <p>SUSPENDED</p>
+                                            {% elif user.account_status == 5  %}
+                                                <p>SPAM</p>
+                                            {% endif %}
+
+                                        </td>
+                                        <td class="actions">
+                                           <input type="checkbox" name="vehicle2" value="Car" id="{{ user.pk }}" onclick="Jarvis(this.id)">
+
+                                        </td>
+                                    </tr>
+
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                                <div class="form-group clearfix">
+                                    <a id ="ucl" href="{% url 'prop_transfare' %}"></a>
+                                    <a id ="url" href="#" ><button type="submit" class="btn pull-right btn-default" id="account-submit">Save Changes</button></a>
+                                            </div><!-- /.form-group -->
+
+                                <script>
+
+                                        function Jarvis(clicked_id){ var collection =document.getElementById("table").getElementsByTagName('INPUT');for (var x=0; x<collection.length; x++) {
+        if (collection[x].type.toUpperCase()=='CHECKBOX'){ if (collection[x].checked){collection[x].checked= false;}
+            //console.log(collection[x]);
+
+    }}
+    base = "{{ page }}";
+        document.getElementById(clicked_id).checked = true;
+        var link = document.getElementById("ucl").href;
+        document.getElementById("url").href = link+"?page="+clicked_id+"&&intented="+base;
+        //console.log(link+"?page="+clicked_id+"&&intented="+base);
+
+
+    }
+
+                                    </script>
+                                {% else %}
+                                <h4><p>No Agents in your Agency , that have been approved or submitted for approval . Inform your agents to select your agency name so that you can add or approve them to your Agency</p></h4>
+                                {% endif  %}
+                            </div><!-- /.table-responsive -->
+                            <!-- Pagination -->
+                            <div class="center">
+                                <ul class="pagination">
+                                          {% if users.has_other_pages %}
+
+    {% if users.has_previous %}
+      <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in users.paginator.page_range %}
+      {% if users.number == i %}
+        <li class="active"><span>{{ i }} </span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if users.has_next %}
+      <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+
+{% endif %}
+
+                                </ul><!-- /.pagination-->
+                            </div><!-- /.center-->
+                        </div><!-- /.my-properties -->
+                    </section><!-- /#my-properties -->
+                </div><!-- /.col-md-9 -->
+                <!-- end My Properties -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div>
+    <!-- end Page Content -->
+    <!-- Page Footer -->
+    <footer id="page-footer">
+        <div class="inner">
+            <aside id="footer-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>About Us</h3>
+                                <p>Vel fermentum ipsum. Suspendisse quis molestie odio. Interdum et malesuada fames ac ante ipsum
+                                    primis in faucibus. Quisque aliquet a metus in aliquet. Praesent ut turpis posuere, commodo odio
+                                    id, ornare tortor
+                                </p>
+                                <hr>
+                                <a href="#" class="link-arrow">Read More</a>
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>Recent Properties</h3>
+                                <div class="property small">
+                                    <a href="property-detail.html">
+                                        <div class="property-image">
+                                            <img alt="" src="assets/img/properties/property-06.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="info">
+                                        <a href="property-detail.html"><h4>2186 Rinehart Road</h4></a>
+                                        <figure>Doral, FL 33178 </figure>
+                                        <div class="tag price">$ 72,000</div>
+                                    </div>
+                                </div><!-- /.property -->
+                                <div class="property small">
+                                    <a href="property-detail.html">
+                                        <div class="property-image">
+                                            <img alt="" src="assets/img/properties/property-09.jpg">
+                                        </div>
+                                    </a>
+                                    <div class="info">
+                                        <a href="property-detail.html"><h4>2479 Murphy Court</h4></a>
+                                        <figure>Minneapolis, MN 55402</figure>
+                                        <div class="tag price">$ 36,000</div>
+                                    </div>
+                                </div><!-- /.property -->
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>Contact</h3>
+                                <address>
+                                    <strong>Your Company</strong><br>
+                                    4877 Spruce Drive<br>
+                                    West Newton, PA 15089
+                                </address>
+                                +1 (734) 123-4567<br>
+                                <a href="#">hello@example.com</a>
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>Useful Links</h3>
+                                <ul class="list-unstyled list-links">
+                                    <li><a href="#">All Properties</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Login and Register Account</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="#">Terms and Conditions</a></li>
+                                </ul>
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </aside><!-- /#footer-main -->
+            <aside id="footer-thumbnails" class="footer-thumbnails"></aside><!-- /#footer-thumbnails -->
+            <aside id="footer-copyright">
+                <div class="container">
+                    <span>Copyright © 2013. All Rights Reserved.</span>
+                    <span class="pull-right"><a href="#page-top" class="roll">Go to top</a></span>
+                </div>
+            </aside>
+        </div><!-- /.inner -->
+    </footer>
+    <!-- end Page Footer -->
+</div>
+
+<script type="text/javascript" src="assets/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/smoothscroll.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="assets/js/retina-1.1.0.min.js"></script>
+<script type="text/javascript" src="assets/js/custom.js"></script>
+<!--[if gt IE 8]>
+<script type="text/javascript" src="assets/js/ie.js"></script>
+<![endif]-->
+
+</body>
+</html>

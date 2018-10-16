@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="ThemeStarz">
+{% load staticfiles %}
+    <style>
+        @font-face {
+  font-family: "FontAwesome";
+  src: url("{% static 'assets/fonts/fontawesome-webfont.eot?v=4.0.3' %}");
+  src: url("{% static 'assets/fonts/fontawesome-webfont.eot?#iefix&v=4.0.3' %}") format("embedded-opentype"), url("{% static 'assets/fonts/fontawesome-webfont.woff?v=4.0.3'%}") format("woff"), url("{% static 'assets/fonts/fontawesome-webfont.ttf?v=4.0.3'%}") format("truetype"), url("{% static 'assets/fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular'%}") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+    </style>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+    <link href="{% static 'assets/fonts/font-awesome.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-select.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.slider.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" type="text/css">
+
+    <title>Zoner | Create an Account</title>
+
+</head>
+
+<body class="page-sub-page page-create-account page-account" id="page-top">
+<!-- Wrapper -->
+<div class="wrapper">
+    <!-- Navigation -->
+    <div class="navigation">
+        <div class="secondary-navigation">
+            <div class="container">
+                <div class="contact">
+                    <figure><strong>Phone:</strong>+1 810-991-3842</figure>
+                    <figure><strong>Email:</strong>zoner@example.com</figure>
+                </div>
+                <div class="user-area">
+                    <div class="actions">
+                        {% if user.is_authenticated %}
+
+                                             {% if user.account_type != "agency" %}
+                                                  <a href="{% url 'create_agency' %}" class="promoted">Create Agency</a>
+                                             {% endif %}
+                        {% endif %}
+
+                                                {% if user.is_authenticated %}
+
+                                                       {% if user.account_type == "agent" %}
+
+                                                                            <a href="{% url 'profile' %}" class="promoted"><strong>Profile</strong></a>
+                                                       {% elif user.account_type == "user" %}
+
+                                                       <a href="{% url 'profile' %}" class="promoted"><strong>Profile</strong></a>
+
+
+
+                                                       {% else %}
+
+                                                    <a href="{% url 'agency_profile' %}" class="promoted"><strong>Profile</strong></a>
+                                                        {% endif %}
+                                                 {% else %}
+                                                  <a href="{% url 'create_agency' %}" class="promoted">Create Agency</a>
+
+                                                     <a href="{% url 'signup' %}" class="promoted"><strong>Register</strong></a>
+
+                                                 {% endif %}
+
+                        {% if user.is_authenticated %}
+
+                        <a href="{% url 'signin' %}">Sign Out</a>
+
+
+                        {% endif %}
+                    </div>
+                    <div class="language-bar">
+                        <a href="#" class="active"><img src="{% static 'assets/img/flags/gb.png' %}" alt=""></a>
+                        <a href="#"><img src="{% static 'assets/img/flags/de.png' %}" alt=""></a>
+                        <a href="#"><img src="{% static 'assets/img/flags/es.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <header class="navbar" id="top" role="banner">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand nav" id="brand">
+                        <a href="index-google-map-fullscreen.html"><img src="{% static 'assets/img/logo.png' %}" alt="brand"></a>
+                    </div>
+                </div>
+                <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                    <ul class="nav navbar-nav">
+                        <li class="active has-child"><a href="{% url 'home' %}">Homepage</a>
+                            <ul class="child-navigation">
+                                <li><a href="index-google-map-fullscreen.html">Google Map Full Screen</a></li>
+                                <li><a href="index-google-map-fixed-height.html">Google Map Fixed Height</a></li>
+                                <li><a href="index-google-map-fixed-navigation.html">Google Map Fixed Navigation</a></li>
+                                <li><a href="index-osm.html">OpenStreetMap Full Screen</a></li>
+                                <li><a href="index-osm-fixed-height.html">OpenStreetMap Fixed Height</a></li>
+                                <li><a href="index-osm-fixed-navigation.html">OpenStreetMap Fixed Navigation</a></li>
+                                <li><a href="index-slider.html">Slider Homepage</a></li>
+                                <li><a href="index-slider-search-box.html">Slider with Search Box</a></li>
+                                <li><a href="index-horizontal-search-floated.html">Horizontal Search Floated</a></li>
+                                <li><a href="index-advanced-horizontal-search.html">Horizontal Advanced Search</a></li>
+                                <li><a href="index-slider-horizontal-search-box.html">Horizontal Slider Search</a></li>
+                                <li><a href="index-slider-horizontal-search-box-floated.html">Horizontal Slider Floated Search</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-child"><a href="#">Properties</a>
+                            <ul class="child-navigation">
+                                <li><a href="{% url 'property_detail' %}">Property Detail</a></li>
+                                <li><a href="{% url 'property_listing' %}">Masonry Listing</a></li>
+                                <li><a href="{% url 'property_grid_listing' %}">Grid Listing</a></li>
+                                <li><a href="{% url 'property_line_listing' %}">Lines Listing</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-child"><a href="#">Pages</a>
+                            <ul class="child-navigation">
+                                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                                <li><a href="{% url 'agent_detail' %}">Agent Detail</a></li>
+                                <li><a href="{% url 'invoice' %}">Invoice</a></li>
+                                <li><a href="{% url 'profile' %}">Profile</a></li>
+                                <li><a href="{% url 'my_properties' %}">My Properties</a></li>
+                                <li><a href="{% url 'bookmarked' %}">Bookmarked Properties</a></li>
+                                <li><a href="#">Create Account</a></li>
+                                <li><a href="{% url 'create_agency' %}">Create Agency</a></li>
+                                <li><a href="{% url 'signin' %}">Sign In</a></li>
+                                <li class="has-child"><a href="#">Error Pages</a>
+                                    <ul class="child-navigation">
+                                        <li><a href="{% url '403' %}">403</a></li>
+                                        <li><a href="{% url '404' %}">404</a></li>
+                                        <li><a href="{% url '500' %}">500</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="">FAQ</a></li>
+                                <li><a href="{% url 'left_side' %}">Left Sidebar</a></li>
+                                <li><a href="{% url 'right_side' %}">Right Sidebar</a></li>
+                                <li><a href="sticky-footer.html">Sticky Footer</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="shortcodes.html">Shortcodes</a></li>
+                                <li><a href="{% url 'timeline' %}">Timeline</a></li>
+                                <li><a href="{% url 'terms_conditions' %}">Terms & Conditions</a></li>
+                                <li><a href="{% url 'rtl' %}">RTL Support</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-child"><a href="#">Agents & Agencies</a>
+                            <ul class="child-navigation">
+                                <li><a href="{% url 'agent_listing' %}">Agents Listing</a></li>
+                                <li><a href="{% url 'agent_detail' %}">Agent Detail</a></li>
+                                <li><a href="{% url 'agency_listing' %}">Agencies Listing</a></li>
+                                <li><a href="{% url 'agency_detail' %}">Agency Detail</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'add_property' %}">Submit</a></li>
+                        <li class="has-child"><a href="#">Blog</a>
+                            <ul class="child-navigation">
+                                <li><a href="blog.html">Blog Listing</a></li>
+                                <li><a href="blog-detail.html">Blog Post Detail</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </nav><!-- /.navbar collapse-->
+                <div class="add-your-property">
+                    <a href="{% url 'add_property' %}" class="btn btn-default"><i class="fa fa-plus"></i><span class="text">Add Your Property</span></a>
+                </div>
+            </header><!-- /.navbar -->
+        </div><!-- /.container -->
+    </div><!-- /.navigation -->
+    <!-- end Navigation -->
+    <!-- Page Content -->
+    <div id="page-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Agencies</a></li>
+                <li class="active">Agency Detail</li>
+            </ol>
+        </div>
+        <!-- end Breadcrumb -->
+
+        <div class="container">
+            <div class="row">
+                <!-- Agent Detail -->
+                <div class="col-md-9 col-sm-9">
+                    <section id="agent-detail">
+                        <header><h1>{{ book.agency_name}}</h1></header>
+                        <section id="agent-info">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3">
+                                    <figure class="agency-image">
+                                        {% if book.image_logo is None %}
+                                        <img alt="" src="{% static 'assets/img/agency-logo-big-01.png' %}">
+                                        {% else %}
+                                             <img  alt="" class="image left" src="{{ book.image_logo }}" >
+
+                                        {% endif %}
+
+                                    </figure></div><!-- /.col-md-3 -->
+                                <div class="col-md-5 col-sm-5">
+                                    <h3>Contact Info</h3>
+                                    <address>
+                                        <a href="#" class="show-on-map"><i class="fa fa-map-marker"></i><figure>Map</figure></a>
+                                        <strong>{{ book.address }}</strong><br>
+                                        <br>
+                                        {{ book.address1 }}
+                                    </address>
+                                    <dl>
+                                        <dt>Phone:</dt>
+                                        <dd>{{ book.phone }}</dd>
+                                        <dt>Email:</dt>
+                                        <dd><a href="mailto:#">{{ book.email }}</a></dd>
+                                        <dt>website:</dt>
+                                        <dd>{{ book.website }}</dd>
+                                    </dl>
+                                </div><!-- /.col-md-5 -->
+                                <div class="col-md-4 col-sm-4">
+                                    <h3>Shortly About Us</h3>
+                                    <p>{{ book.description }}
+                                    </p>
+                                    <div id="social">
+                                        <h3>Social Profiles</h3>
+                                        <div class="agent-social">
+                                             {% if book.twitter  %}
+                                            <a href="{{ book.twitter }}" class="fa fa-twitter btn btn-grey-dark"></a>
+
+                                             {% endif %}
+
+                                             {% if book.facebook %}
+                                            <a href="{{ book.facebook }}" class="fa fa-facebook  btn btn-grey-dark"></a>
+
+                                             {% endif %}
+
+                                             {% if book.pintrest %}
+                                            <a href="{{ book.pintrest }}" class="fa fa-linkedin  btn btn-grey-dark"></a>
+
+                                             {% endif %}
+                                        </div>
+                                    </div><!-- /.block -->
+                                </div><!-- /.col-md-4 -->
+                            </div><!-- /.row -->
+                            <div class="row">
+
+                            </div><!-- /.row -->
+                        </section><!-- /#agent-info -->
+                        <hr class="thick">
+                        <section id="agent-properties">
+
+                            {% if props_number > 0 %}
+                                       <header><h3>Properties ({{  props_number }})</h3></header>
+                                        {% else %}
+                                     <header><h3>No Properties</h3></header>
+
+                                        {% endif %}
+                            <div class="layout-expandable">
+                                <div class="row">
+                                     {% for user in props %}
+                                    <div class="col-md-4 col-sm-4">
+
+                                        <div class="property">
+                                            <a href="{% url 'property_detail' %}?page={{ user.pk }}">
+                                                <div class="property-image">
+                                                     {% if not user.house_plan_file %}
+                                                <img alt="" src="{% static 'assets/img/properties/property-09.jpg' %}">
+                                        {% else %}
+                                             <img alt="" class="image" src="{{ user.house_plan_file }}" >
+                                        {% endif %}
+                                                </div>
+                                                <div class="overlay">
+                                                    <div class="info">
+                                                        <div class="tag price">k {{ user.property_price }}</div>
+                                                         <h3>{{ user.address }}</h3>
+
+
+                                                    </div>
+                                                    <ul class="additional-info">
+                                                        <li>
+                                                            <header>Area:</header>
+                                                            <figure>{{ user.area_dimension }}m<sup>2</sup></figure>
+                                                        </li>
+                                                        <li>
+                                                            <header>Beds:</header>
+                                                            <figure>{{ user.number_of_bedrooms }}</figure>
+                                                        </li>
+                                                        <li>
+                                                            <header>Baths:</header>
+                                                            <figure>{{ user.number_of_bathrooms }}</figure>
+                                                        </li>
+                                                        <li>
+                                                            <header>Garages:</header>
+                                                            <figure>{{ user.number_of_garages }}</figure>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </a>
+                                        </div><!-- /.property -->
+                                                                            </div><!-- /.col-md-4 -->
+                                    {% endfor %}
+                                </div><!-- /.row-->
+
+                            </div>
+                            <div class="center">
+                                <span class="show-all">Show All Properties</span>
+                            </div>
+                        </section><!-- /#agent-properties -->
+                        <hr class="thick">
+
+                        <section id="agents-listing">
+
+                            {% if props_number > 0 %}
+                                       <header><h3>Our Agents ({{  agents_number }})</h3></header>
+
+
+                                        {% endif %}
+                             {% for user in agents %}
+                            <div class="col-md-12 col-lg-6">
+                                  <div class="agent">
+                                    <a href="{% url 'agent_detail' %}?page={{ user.pk }}" class="agent-image">
+                                        {% if user.profile_photo is None %}
+                                              <img alt="" class="image" src="{%  static 'assets/img/agent-01.jpg' %}">
+                                        {% else %}
+                                             <img alt="" class="image" height="200" src="{{ user.profile_photo }}" >
+                                        {% endif %}
+                                    </a>
+                                    <div class="wrapper">
+                                        <header><a href="{% url 'agent_detail' %}?page={{ user.pk }}"><h2>{{ user.first_name }} {{ user.last_name }}</h2></a></header>
+                                        <aside>23 Properties</aside>
+                                        <dl>
+                                            <dt>Phone:</dt>
+                                            <dd>{{ user.phone_number }}</dd>
+
+                                            <dt>Email:</dt>
+                                            <dd><a href="mailto:#">{{ user.email_address }}</a></dd>
+                                            <dt>Skype:</dt>
+                                            <dd>{{ user.skype }}</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                                {% endfor %}
+
+                            <!-- /.row -->
+                        </section><!-- /#agents-listing -->
+                        <hr class="thick">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <section id="agent-testimonials">
+                                    <h3>What Other Said About Us</h3>
+                                    <div class="owl-carousel testimonials-carousel small">
+                                        <blockquote class="testimonial">
+                                            <figure>
+                                                <div class="image">
+                                                    <img alt="" src="assets/img/client-01.jpg">
+                                                </div>
+                                            </figure>
+                                            <aside class="cite">
+                                                <p>Fusce risus metus, placerat in consectetur eu, porttitor a est sed sed dolor lorem cras adipiscing</p>
+                                                <footer>Natalie Jenkins</footer>
+                                            </aside>
+                                        </blockquote>
+                                        <blockquote class="testimonial">
+                                            <figure>
+                                                <div class="image">
+                                                    <img alt="" src="assets/img/client-01.jpg">
+                                                </div>
+                                            </figure>
+                                            <aside class="cite">
+                                                <p>Fusce risus metus, placerat in consectetur eu, porttitor a est sed sed dolor lorem cras adipiscing</p>
+                                                <footer>Natalie Jenkins</footer>
+                                            </aside>
+                                        </blockquote>
+                                    </div><!-- /.testimonials-carousel -->
+                                </section><!-- /#agent-testimonial -->
+                            </div><!-- /.col-md-5 -->
+                            <div class="col-md-7">
+                                <h3>Send Us a Message</h3>
+                                <div class="agent-form">
+                                    <form role="form" id="form-contact-agent" method="post"  class="clearfix">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    {{ form.Your_Name.label_tag }}
+                                                    {{ form.Your_Name.errors }}
+                                                    {{ form.Your_Name }}
+                                                </div><!-- /.form-group -->
+                                            </div><!-- /.col-md-6 -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    {{ form.Your_Email.label_tag }}
+                                                    {{ form.Your_Email.errors }}
+                                                    {{ form.Your_Email }}
+                                                </div><!-- /.form-group -->
+                                            </div><!-- /.col-md-6 -->
+                                        </div><!-- /.row -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    {{ form.Your_Message.label_tag }}
+                                                    {{ form.Your_Message.errors }}
+                                                    {{ form.Your_Message }}
+
+                                                </div><!-- /.form-group -->
+                                            </div><!-- /.col-md-12 -->
+                                        </div><!-- /.row -->
+                                        <div class="form-group clearfix">
+                                            <button type="submit" class="btn pull-right btn-default" id="form-contact-agent-submit">Send a Message</button>
+                                        </div><!-- /.form-group -->
+                                        <div id="form-rating-status"></div>
+                                    </form><!-- /#form-contact -->
+                                </div><!-- /.rating-form -->
+                            </div>
+                        </div><!-- /.row -->
+                    </section><!-- /#agent-detail -->
+                </div><!-- /.col-md-9 -->
+                <!-- end Agent Detail -->
+
+                <!-- sidebar -->
+                <div class="col-md-3 col-sm-3">
+                    <section id="sidebar">
+                        <aside id="edit-search">
+                            <header><h3>Search Properties</h3></header>
+                            <form role="form" id="form-sidebar" class="form-search" action="{% url 'property_grid_listing' %}" >
+                                <div class="form-group">
+
+                                                    {{ form1.city }}
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    {{ form1.status }}
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    {{ form1.town }}
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                       {{ form1.provinces }}
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    {{ form1.Property_type }}
+
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    <div class="price-range">
+                                        {{ form1.price_range }}
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-default">Search Now</button>
+                                </div><!-- /.form-group -->
+                            </form><!-- /#form-map -->
+                        </aside><!-- /#edit-search -->
+                        <aside id="featured-properties">
+                            <header><h3>Featured Properties</h3></header>
+                            <div class="property small">
+                                <a href="property-detail.html">
+                                    <div class="property-image">
+                                        <img alt="" src="assets/img/properties/property-06.jpg">
+                                    </div>
+                                </a>
+                                <div class="info">
+                                    <a href="property-detail.html"><h4>2186 Rinehart Road</h4></a>
+                                    <figure>Doral, FL 33178 </figure>
+                                    <div class="tag price">$ 72,000</div>
+                                </div>
+                            </div><!-- /.property -->
+                            <div class="property small">
+                                <a href="property-detail.html">
+                                    <div class="property-image">
+                                        <img alt="" src="assets/img/properties/property-09.jpg">
+                                    </div>
+                                </a>
+                                <div class="info">
+                                    <a href="property-detail.html"><h4>2479 Murphy Court</h4></a>
+                                    <figure>Minneapolis, MN 55402</figure>
+                                    <div class="tag price">$ 36,000</div>
+                                </div>
+                            </div><!-- /.property -->
+                            <div class="property small">
+                                <a href="property-detail.html">
+                                    <div class="property-image">
+                                        <img alt="" src="assets/img/properties/property-03.jpg">
+                                    </div>
+                                </a>
+                                <div class="info">
+                                    <a href="property-detail.html"><h4>1949 Tennessee Avenue</h4></a>
+                                    <figure>Minneapolis, MN 55402</figure>
+                                    <div class="tag price">$ 128,600</div>
+                                </div>
+                            </div><!-- /.property -->
+                        </aside><!-- /#featured-properties -->
+                        <aside id="our-guides">
+                            <header><h3>Our Guides</h3></header>
+                            <a href="#" class="universal-button">
+                                <figure class="fa fa-home"></figure>
+                                <span>Buying Guide</span>
+                                <span class="arrow fa fa-angle-right"></span>
+                            </a><!-- /.universal-button -->
+                            <a href="#" class="universal-button">
+                                <figure class="fa fa-umbrella"></figure>
+                                <span>Right Insurance for You</span>
+                                <span class="arrow fa fa-angle-right"></span>
+                            </a><!-- /.universal-button -->
+                        </aside><!-- /#our-guide -->
+                    </section><!-- /#sidebar -->
+                </div><!-- /.col-md-3 -->
+                <!-- end Sidebar -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div>
+    <!-- end Page Content -->
+    <!-- Page Footer -->
+    <footer id="page-footer">
+        <div class="inner">
+            <aside id="footer-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>About Us</h3>
+                                <p>Vel fermentum ipsum. Suspendisse quis molestie odio. Interdum et malesuada fames ac ante ipsum
+                                    primis in faucibus. Quisque aliquet a metus in aliquet. Praesent ut turpis posuere, commodo odio
+                                    id, ornare tortor
+                                </p>
+                                <hr>
+                                <a href="{% url 'about_us' %}" class="link-arrow">Read More</a>
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                        <div class="col-md-3 col-sm-3">
+                      <article>
+                                <h3>Recent Properties</h3>
+                                {% for user in user_n %}
+                                 <div class="property small">
+                                    <a href="property-detail.html">
+                                        <div class="property-image">
+                                              {% if not user.house_plan_file %}
+                                             <img alt="" src="{% static 'assets/img/properties/property-06.jpg' %}">
+                                        {% else %}
+                                             <img alt=""  src="{{ user.house_plan_file }}" >
+                                        {% endif %}
+                                        </div>
+                                    </a>
+                                    <div class="info">
+                                        <a href="{% url 'property_detail' %}?page={{ user.pk }}"><h4>{{ user.address }}</h4></a>
+                                        <figure>{% if user.city is not None %}
+                                            {{ user.city }} , {{ user.province }}
+                                            {% endif %}
+
+                                            {% if user.town is not None %}
+                                            {{ user.town }} , {{ user.province }}
+                                            {% endif %} </figure>
+                                        <div class="tag price">k {{ user.property_price }}</div>
+                                    </div>
+                                </div><!-- /.property -->
+                                {% endfor %}
+
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>Contact</h3>
+                                <address>
+                                    <strong>Your Company</strong><br>
+                                    4877 Spruce Drive<br>
+                                    West Newton, PA 15089
+                                </address>
+                                +1 (734) 123-4567<br>
+                                <a href="#">hello@example.com</a>
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                        <div class="col-md-3 col-sm-3">
+                            <article>
+                                <h3>Useful Links</h3>
+                                <ul class="list-unstyled list-links">
+                                    <li><a href="{% url 'property_grid_listing' %}">All Properties</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="{% url 'signup' %}"> Register Account</a></li>
+                                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                                    <li><a href="{% url 'terms' %}">Terms and Conditions</a></li>
+                                </ul>
+                            </article>
+                        </div><!-- /.col-sm-3 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </aside><!-- /#footer-main -->
+            <aside id="footer-thumbnails" class="footer-thumbnails"></aside><!-- /#footer-thumbnails -->
+            <aside id="footer-copyright">
+                <div class="container">
+                    <span>Copyright © 2013. All Rights Reserved.</span>
+                    <span class="pull-right"><a href="#page-top" class="roll">Go to top</a></span>
+                </div>
+            </aside>
+        </div><!-- /.inner -->
+    </footer>
+    <!-- end Page Footer -->
+</div>
+
+<script type="text/javascript" src="{%  static 'assets/js/jquery-2.1.0.min.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/jquery-migrate-1.2.1.min.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/smoothscroll.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/owl.carousel.min.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/bootstrap-select.min.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/jquery.validate.min.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/icheck.min.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/retina-1.1.0.min.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/jshashtable-2.1_src.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/jquery.numberformatter-1.2.3.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/tmpl.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/jquery.dependClass-0.1.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/draggable-0.1.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/jquery.slider.js' %}"></script>
+<script type="text/javascript" src="{%  static 'assets/js/custom.js' %}"></script>
+<!--[if gt IE 8]>
+<script type="text/javascript" src="{%  static 'assets/js/ie.js' %}"></script>
+<![endif]-->
+
+</body>
+</html>
